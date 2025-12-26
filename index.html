@@ -440,7 +440,7 @@
  <div id="dobScreen" style="text-align:center; color:white; margin-top:30vh;">
   <div class="profile" aria-hidden="true"></div>
   <h1 class="dob-title">King Arthur & Queen Shammy Chronicles</h1>
-  <p style="font-size:4vw;">Enter Special date to unlock the letter:</p>
+  <p style="font-size:4vw;">Enter the secret date to unlock the letter:</p>
   <select id="day" style="font-size:4vw; padding:1vw;">
     <option value="">Day</option>
     <!-- Days 1-31 -->
@@ -541,7 +541,7 @@ function checkDOB() {
   const month = document.getElementById("month").value;
   const year = document.getElementById("year").value;
 
-  const correctDOB = { day: "20", month: "3", year: "2024" }; // your DOB
+  const correctDOB = { day: "17", month: "7", year: "2003" }; // your DOB
 
   if(day === correctDOB.day && month === correctDOB.month && year === correctDOB.year) {
     document.getElementById("dobScreen").style.display = "none";
@@ -599,13 +599,7 @@ document.getElementById("card").style.display = "none";
       setTimeout(() => {
         document.getElementById('card').style.display = 'none';
         document.getElementById('finalMessage').style.display = 'flex';
-                // show the double-tap hint and attach terminate listener
-        const final = document.getElementById('finalMessage');
-        const hint = document.getElementById('doubleTapHint');
-        if(hint) hint.style.display = 'block';
-        attachDoubleTapTerminate(final);
       }, 1500);
-    }
     }
   </script>
 
