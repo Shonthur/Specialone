@@ -181,13 +181,6 @@
       text-align: center;
     }
 
-        /* Fade-out used when terminating the letter */
-    #finalMessage.fade-out { opacity: 0; transform: scale(0.98); transition: opacity 1s ease, transform 1s ease; }
-
-    /* Hint shown on final page to instruct double-tap */
-    #doubleTapHint { font-size: 3.6vw; color: #d8bfff; margin-top: 18px; opacity: 0.95; }
-    @media (min-width:700px){ #doubleTapHint{font-size:16px;} }
-
     #finalMessage p:nth-child(1) { animation-delay: 1s; }
     #finalMessage p:nth-child(2) { animation-delay: 5s; }
     #finalMessage p:nth-child(3) { animation-delay: 9s; }
@@ -500,7 +493,6 @@
 
  <div id="finalMessage">
   <p>My little bunny 🐇, u are the sparkle that turns my world into magic ✨, the moonlight that dances through my nights 🌙, the heartbeat I feel even when we’re apart 💖; every glance, every laugh of urs makes my soul leap and my heart know, without a doubt, that in ur arms I’ve found my universe and my forever home 💫.</p>
-  <div id="doubleTapHint">Double-tap anywhere to terminate the letter</div>
 </div>
 
 
@@ -614,26 +606,6 @@ document.getElementById("card").style.display = "none";
         attachDoubleTapTerminate(final);
       }, 1500);
     }
-     }
-
-    // Attach double-tap/dblclick to terminate the final message with a fade-out
-    function attachDoubleTapTerminate(el){
-      if(!el) return;
-      let lastTap = 0;
-      function doTerminate(){
-        const audio = document.getElementById('unlockMusic');
-        if(audio){ audio.pause(); audio.currentTime = 0; }
-        el.classList.add('fade-out');
-        // hide after transition
-        setTimeout(()=>{ el.style.display = 'none'; el.classList.remove('fade-out'); }, 1000);
-      }
-      el.addEventListener('dblclick', doTerminate);
-      el.addEventListener('touchend', function(e){
-        const now = Date.now();
-        const delta = now - lastTap;
-        lastTap = now;
-        if(delta > 0 && delta < 400){ doTerminate(); }
-      }, {passive:true});
     }
   </script>
 
